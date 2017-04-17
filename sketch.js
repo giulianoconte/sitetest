@@ -3,7 +3,7 @@
 // rules: (A -> AB), (B -> A)
 
 var cnv; //canvas
-
+ 
 var angle = 25;
 var axiom = "F";
 var sentence = axiom;
