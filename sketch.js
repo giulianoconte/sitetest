@@ -2,6 +2,8 @@
 // axiom: A
 // rules: (A -> AB), (B -> A)
 
+var cnv; //canvas
+
 var angle = 25;
 var axiom = "F";
 var sentence = axiom;
@@ -58,12 +60,24 @@ function turtle() {
   }
 }
 
+function centerCanvas() {
+	var x = (windowWidth - width) / 2;
+	var y = (windowHeight - height) / 2;
+	cnv.position(x, y);
+}
+
 function setup() {
-  createCanvas(400, 400);
-  angle = radians(angle);
+  cnv = createCanvas(400, 400);
+  centerCanvas();
+  
   background(51);
+  angle = radians(angle);
   turtle();
   createP(axiom);
   var button = createButton("generate");
   button.mousePressed(generate);
+}
+
+function windowResized() {
+	centerCanvas();
 }
