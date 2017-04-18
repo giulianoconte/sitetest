@@ -75,11 +75,13 @@ function centerCanvas() {
 	cnv.position(x, y);
 }
 
+function preload() {
+	sound = loadSound("doorclose.mp3");
+}
+
 function setup() {
   cnv = createCanvas(400, 400);
   centerCanvas();
-
-  sound = loadSound("doorclose.mp3");
 
   background(51);
   angle = radians(angle);
