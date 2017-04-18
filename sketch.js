@@ -19,7 +19,7 @@ var sound;
 
 function generate() {
   if (sound.isPlaying()) {
-		sound.stop();
+		sound.pause();
 	} else {
 		sound.play();
 	}
@@ -82,7 +82,9 @@ function preload() {
 function setup() {
   cnv = createCanvas(400, 400);
   centerCanvas();
-
+	
+	sound.loop();
+	
   background(51);
   angle = radians(angle);
   turtle();
