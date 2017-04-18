@@ -3,7 +3,7 @@
 // rules: (A -> AB), (B -> A)
 
 var cnv; //canvas
- 
+
 var angle = 25;
 var axiom = "F";
 var sentence = axiom;
@@ -15,7 +15,16 @@ rules[0] = {
   b: "FF[+F-F-F][--F+F+F]"
 }
 
+var sound;
+
 function generate() {
+  if (sound.isPlaying()) {
+		sound.stop();
+	} else {
+		sound.play();
+	}
+	
+  
   len *= 0.5;
   var nextSentence = "";
   for (var i = 0; i < sentence.length; i++) {
@@ -23,12 +32,12 @@ function generate() {
     var found = false;
     for (var j = 0; j < rules.length; j++) {
       if (current == rules[j].a) {
-        found = true;
-        nextSentence += rules[j].b;
-        break;
+	found = true;
+	nextSentence += rules[j].b;
+	break;
       }
       if (!found) {
-        nextSentence += current;
+	nextSentence += current;
       }
     }
   }
@@ -69,7 +78,9 @@ function centerCanvas() {
 function setup() {
   cnv = createCanvas(400, 400);
   centerCanvas();
-  
+
+  sound = loadSound("doorclose.mp3");
+
   background(51);
   angle = radians(angle);
   turtle();
